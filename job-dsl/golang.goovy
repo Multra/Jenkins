@@ -9,7 +9,7 @@ job('golang example') {
     scm('H/5 * * * *')
   }
   wrappers {
-    Go('golang')
+    golang('golang')
   }
   steps {
     shell("go install github.com/golang/example/hello")
