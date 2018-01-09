@@ -1,0 +1,17 @@
+job('golang example') {
+  scm {
+    git('git://github.com/Multra/docker-hello.git') { node ->
+      node / gitConfigName('Multra')
+      node / gitConfigEmail('Multra@gmail.com')
+    }
+  }
+  triggers {
+    scm('H/5 * * * *')
+  }
+  wrappers {
+    Go('golang')
+  }
+  steps {
+    shell("go install github.com/golang/example/hello")
+  }
+}
